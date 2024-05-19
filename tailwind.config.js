@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "meteo-primary": "#027034",
-        "meteo-secondary": "#292524",
+        "meteo-primary": "#262626",
+        "meteo-secondary": "#10b981",
       },
     },
     fontFamily: {
@@ -17,12 +17,12 @@ module.exports = {
       center: true,
     },
     screens: {
-    sm: "640px",
-    md: "768px",
-    // lg: "1024px",
-    // xl: "1280px",
-    // "2xl": "1536px",
+      sm: "640px",
+      md: "768px",
+      // lg: "1024px",
+      // xl: "1280px",
+      // "2xl": "1536px",
     },
   },
-    plugins: [],
+  plugins: [],
 };
