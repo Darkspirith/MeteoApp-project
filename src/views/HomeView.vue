@@ -1,9 +1,18 @@
 <template>
   <main class="container text-white">
     <div class="pt-4 mb-8 relative">
-      <input />
+      <input
+        type="text"
+        v-model="searchQuery"
+        placeholder="Wpisz nazwę miejscowości"
+        class="py-2 px-1 w-full rounded bg-transparent border-b focus:border-meteo-secondary focus:outline-none focus:shadow-[0px_1px_0_0_#00000]"
+      />
     </div>
   </main>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+
+const searchQuery = ref("")
+</script>
