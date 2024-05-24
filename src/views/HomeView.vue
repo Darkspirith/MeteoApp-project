@@ -14,5 +14,14 @@
 <script setup>
 import { ref } from "vue";
 
-const searchQuery = ref("")
+const searchQuery = ref("");
+const queryTimeout = ref(null);
+
+const getSearchResults = () => {
+  queryTimeout.value = setTimeout(async () => {
+    if (searchQuery.value !== "") {
+      const result = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=&count=10&language=pl&format=json`)
+    }
+  }, 300);
+};
 </script>
