@@ -16,12 +16,19 @@ import { ref } from "vue";
 
 const searchQuery = ref("");
 const queryTimeout = ref(null);
+const geocodingResults = ref(null);
 
 const getSearchResults = () => {
   queryTimeout.value = setTimeout(async () => {
     if (searchQuery.value !== "") {
-      const result = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=&count=10&language=pl&format=json`)
+      const result = await axios.get(
+        `https://geocoding-api.open-meteo.com/v1/search?name=${searchQuery.value}&count=10&language=pl&format=json`
+      );
+      geocodingResults.value = result.data.features;
+      console.log(geocodingResults.value);
+      return;
     }
+    geocodingResults.value = null;
   }, 300);
 };
 </script>
