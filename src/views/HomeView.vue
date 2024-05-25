@@ -4,14 +4,25 @@
       <input
         type="text"
         v-model="searchQuery"
-        placeholder="Wpisz nazwę miejscowości"
-        class="py-2 px-1 w-full rounded bg-transparent border-b focus:border-meteo-secondary focus:outline-none focus:shadow-[0px_1px_0_0_#00000]"
+        @input="getSearchResults.value"
+        placeholder="Wpisz nazwę miejscowości..."
+        class="py-2 px-5 w-full rounded-lg bg-transparent border focus:border-meteo-secondary focus:outline "
       />
+      <ul
+        class="absolute bg-emerald-900 text-white w-full shadow-md py-2 px-1 top-[66px]"
+      >
+        <li
+          v-for="searchResult in geocodingResults"
+          :key="searchResult.id"
+          class="py-2 cursor-pointer"
+        ></li>
+      </ul>
     </div>
   </main>
 </template>
 
 <script setup>
+import axios from "axios";
 import { ref } from "vue";
 
 const searchQuery = ref("");
@@ -22,7 +33,7 @@ const getSearchResults = () => {
   queryTimeout.value = setTimeout(async () => {
     if (searchQuery.value !== "") {
       const result = await axios.get(
-        `https://geocoding-api.open-meteo.com/v1/search?name=${searchQuery.value}&count=10&language=pl&format=json`
+        `https://geocoding-api.open-meteo.com/v1/search?name=${searchQuery.value}&count=20&language=en&format=json`
       );
       geocodingResults.value = result.data.features;
       console.log(geocodingResults.value);
