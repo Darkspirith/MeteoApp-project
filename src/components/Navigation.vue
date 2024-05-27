@@ -5,17 +5,15 @@
     >
       <RouterLink :to="{ name: 'home' }">
         <div class="flex items-center gap-4 flex-1">
-          <!-- zrobic accesibility -->
-          <i class="fa-solid fa-cloud-sun fa-2xl"></i>
+          <i class="fa-solid fa-cloud-sun aria-hidden='true' fa-2xl"></i>
           <p class="text-4xl text-meteo-secondary">MeteoApp</p>
-          <i class="fa-solid fa-temperature-half fa-2xl"></i>
+          <i class="fa-solid fa-temperature-half aria-hidden='true' fa-2xl"></i>
         </div>
       </RouterLink>
 
       <div class="flex gap-5 flex-1 justify-end">
-        <!-- zrobic accesibility -->
         <i
-          class="fa-solid fa-lightbulb fa-xl text-gray-300 hover:text-yellow-500 duration-150 cursor-pointer"
+          class="fa-solid fa-lightbulb aria-label='Przewodnik: Jak korzystać z aplikacji?' fa-xl text-gray-300 hover:text-yellow-500 duration-150 cursor-pointer"
           @click="toggleModal"
         ></i>
         <i
