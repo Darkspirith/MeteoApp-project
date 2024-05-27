@@ -18,7 +18,7 @@
           class="py-2 cursor-pointer"
           @click="previewLocation(searchResult)"
         >
-          {{ searchResult.local_name }}
+          {{ searchResult.place_name }}
         </li>
       </ul>
     </div>
@@ -29,7 +29,9 @@
 import axios from "axios";
 import { ref } from "vue";
 
-const openWeatherAPIKey = "2c668029f81081120d7a7b0a60dff86a";
+// Space for API token.
+const mapboxAPIKey = ""; 
+
 const searchQuery = ref("");
 const queryTimeout = ref(null);
 const geocodingResults = ref(null);
@@ -40,7 +42,7 @@ const getSearchResults = () => {
     if (searchQuery.value !== "") {
       try {
         const result = await axios.get(
-          `http://api.openweathermap.org/geo/1.0/direct?q=${searchQuery.value}&appid=${openWeatherAPIKey}`
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery.value}.json?access_token=${mapboxAPIKey}&types=place`
         );
         geocodingResults.value = result.data.features;
       } catch {
