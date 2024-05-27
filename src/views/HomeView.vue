@@ -37,11 +37,50 @@
 <script setup>
 import axios from "axios";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
 
 // Space for API token.
-const mapboxAPIKey =
-  "";
 
+const mapboxAPIKey = "";
+
+const router = useRouter();
+
+
+//  Cleans a search query by replacing diacritical characters with their non-diacritical counterparts.
+ 
+const cleanSearchQuery = (query) => {
+  const diacriticsMapping = {
+    "ą": "a",
+    "ć": "c",
+    "ę": "e",
+    "ł": "l",
+    "ń": "n",
+    "ó": "o",
+    "ś": "s",
+    "ź": "z",
+    "ż": "z",
+  };
+
+  const regex = /[ąćęłńóśźż]/g;
+  return query.replace(regex, (match) => diacriticsMapping[match]);
+};
+
+
+const previewLocation = (searchResult) => {
+  const cleanedCity = cleanSearchQuery(searchResult.place_name.split(",")[0]);
+  const cleanedState = cleanSearchQuery(searchResult.place_name.split(",")[1]);
+
+  router.push({
+    name: "LocalityView",
+    params: { state: cleanedState.replaceAll(" ", ""), city: cleanedCity.replaceAll(" ", "") },
+    query: {
+      lat: searchResult.geometry.coordinates[1],
+      lng: searchResult.geometry.coordinates[0],
+      preview: true,
+    },
+  });
+};
 const searchQuery = ref("");
 const queryTimeout = ref(null);
 const geocodingResults = ref(null);
@@ -52,7 +91,7 @@ const getSearchResults = () => {
     if (searchQuery.value !== "") {
       try {
         const result = await axios.get(
-          `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery.value}.json?access_token=${mapboxAPIKey}&limit=10&types=place`
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery.value}.json?access_token=${mapboxAPIKey}&limit=10&types=place&language=pl`
         );
         geocodingResults.value = result.data.features;
       } catch {
