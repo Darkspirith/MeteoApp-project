@@ -13,7 +13,7 @@
 
       <div class="flex gap-5 flex-1 justify-end">
         <i
-          class="fa-solid fa-lightbulb aria-label='Przewodnik: Jak korzystać z aplikacji?' fa-xl text-gray-300 hover:text-yellow-500 duration-150 cursor-pointer"
+          class="fa-solid fa-question aria-label='Przewodnik: Jak korzystać z aplikacji?' fa-xl text-gray-300 hover:text-yellow-500 duration-150 cursor-pointer"
           @click="toggleModal"
         ></i>
         <i
