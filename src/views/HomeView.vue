@@ -41,14 +41,11 @@ import { useRouter } from "vue-router";
 
 
 // Space for API token.
-
 const mapboxAPIKey = "";
 
 const router = useRouter();
 
-
 //  Cleans a search query by replacing diacritical characters with their non-diacritical counterparts.
- 
 const cleanSearchQuery = (query) => {
   const diacriticsMapping = {
     "ą": "a",
@@ -66,7 +63,6 @@ const cleanSearchQuery = (query) => {
   return query.replace(regex, (match) => diacriticsMapping[match]);
 };
 
-
 const previewLocation = (searchResult) => {
   const cleanedCity = cleanSearchQuery(searchResult.place_name.split(",")[0]);
   const cleanedState = cleanSearchQuery(searchResult.place_name.split(",")[1]);
@@ -81,6 +77,7 @@ const previewLocation = (searchResult) => {
     },
   });
 };
+
 const searchQuery = ref("");
 const queryTimeout = ref(null);
 const geocodingResults = ref(null);

@@ -3,7 +3,7 @@
     <Suspense>
       <AsyncLocalityView />
       <template #fallback>
-        <p>Wczytywanie...</p>
+        <p class="text-white text-center text-md py-4">Wczytywanie...</p>
       </template>
     </Suspense>
   </div>
