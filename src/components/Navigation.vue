@@ -6,18 +6,18 @@
       <RouterLink :to="{ name: 'home' }">
         <div class="flex items-center gap-4 flex-1">
           <i class="fa-solid fa-cloud-sun aria-hidden='true' fa-2xl"></i>
-          <p class="text-4xl text-meteo-secondary">MeteoApp</p>
+          <span class="text-4xl text-meteo-secondary">MeteoApp</span>
           <i class="fa-solid fa-temperature-half aria-hidden='true' fa-2xl"></i>
         </div>
       </RouterLink>
 
       <div class="flex gap-5 flex-1 justify-end">
         <i
-          class="fa-solid fa-question aria-label='Przewodnik: Jak korzystać z aplikacji?' fa-xl text-gray-300 hover:text-yellow-500 duration-150 cursor-pointer"
+          class="fa-solid fa-question aria-hidden='true' title='Jak korzystać z aplikacji?' fa-2xl text-gray-300 hover:text-yellow-500 hover:scale-110 duration-300 cursor-pointer"
           @click="toggleModal"
         ></i>
         <i
-          class="fa-solid fa-square-plus fa-2xl text-white hover:text-meteo-secondary duration-150 cursor-pointer"
+          class="fa-solid fa-square-plus aria-hidden='true' title='Zapisać tą miejscowość?' fa-2xl text-white hover:text-meteo-secondary hover: duration-300 cursor-pointer"
         ></i>
       </div>
 
@@ -40,7 +40,7 @@
             </li>
             <li>
               Możesz zapisać wybrane miejscowości. Wystarczy, że klikniesz
-              iknonę "+" w prawym górnym rogu. Dane pogodowe dla wybranego
+              ikonkę <i class="fa-solid fa-square-plus aria-hidden:'true' title:'Na ikonie widnieje znak plus' fa-lg px-1"></i> w prawym górnym rogu. Dane pogodowe dla wybranego
               miejsca będą teraz zawsze na wyciągnięcie ręki. Znajdziesz je na
               stronie głównej.
             </li>
