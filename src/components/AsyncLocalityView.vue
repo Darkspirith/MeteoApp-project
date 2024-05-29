@@ -1,5 +1,6 @@
 <template>
   <div class="flex flex-col flex-1 items-center">
+
     <!-- Info banner -->
     <div
       v-if="route.query.preview"
@@ -9,10 +10,10 @@
     </div>
 
     <!-- Weather panel -->
+
     <div class="flex flex-col items-center text-white py-12">
-      
       <h1 class="text-4xl mb-2">
-        <!-- Location name. Also for location name with multiple parts -->
+        <!-- Location name -->
         {{ route.params.city }}
       </h1>
       
@@ -32,6 +33,7 @@
         }}
         <span>r.</span>
         <span class="mx-1"></span>
+
         <!-- Time -->
         {{
           new Date(meteoData.currentTime).toLocaleTimeString("pl-PL", {
@@ -61,7 +63,7 @@
 
     <hr class="border-white border-opacity-10 border w-full" />
 
-    <!-- Hourly Weather -->
+    <!-- Hourly weather -->
     <div class="max-w-screen-md w-full py-12">
       <div class="mx-8 text-white">
         <h2 class="mb-4">Prognoza godzinowa:</h2>
@@ -96,34 +98,44 @@
     <div class="max-w-screen-md w-full py-12">
       <div class="mx-8 text-white">
         <h2 class="mb-4">Prognoza 7-dniowa:</h2>
-        <div
-          v-for="(day, index) in meteoData.daily"
-          :key="day.dt"
-          class="flex items-center"
-        >
-          <p class="flex-1">
-            {{
-              index === 0
-                ? "Dzisiaj"
-                : index === 1
-                ? "Jutro"
-                : new Date(day.dt * 1000).toLocaleDateString("pl-PL", {
-                    weekday: "long",
-                  })
-            }}
-          </p>
-          <img
-            class="w-[50px] h-[50px] object-cover"
-            :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"
-            alt=""
-          />
-
-          <div class="flex gap-2 flex-1 justify-end">
-            <p>{{ Math.round(day.temp.min) }} &degC</p>
-            <span>-</span>
-            <p>{{ Math.round(day.temp.max) }} &degC</p>
-          </div>
-        </div>
+        <table class="w-full">
+          <tbody>
+            <tr v-for="(day, index) in meteoData.daily" :key="day.dt">
+              <td>
+                <p class="justify-start">
+                  {{
+                    index === 0
+                      ? "Dzisiaj"
+                      : index === 1
+                      ? "Jutro"
+                      : new Date(day.dt * 1000).toLocaleDateString("pl-PL", {
+                          weekday: "long",
+                        }).replace(/^[pwścsn]/, function (firstLetter) {
+                          return firstLetter.toUpperCase();
+                        })
+                  }}
+                </p>
+              </td>
+              <td class="p-2">
+                <p class="text-sm mr-2 first-letter:capitalize">{{ day.weather[0].description }}</p>
+              </td>
+              <td class="p-2">
+                <img
+                  class="w-[50px] h-[50px] object-cover"
+                  :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"
+                  alt=""
+                />
+              </td>
+              <td class="p-2">
+                <div class="flex gap-2 justify-end">
+                  <p>{{ Math.round(day.temp.min) }} &degC</p>
+                  <span>-</span>
+                  <p>{{ Math.round(day.temp.max) }} &degC</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -135,6 +147,7 @@ import { useRoute, useRouter } from "vue-router";
 
 // Space for API token.
 const openweathermapAPIKey = "";
+
 const route = useRoute();
 const getMeteoData = async () => {
   try {
