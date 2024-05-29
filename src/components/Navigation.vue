@@ -1,12 +1,12 @@
 <template>
-  <header class="sticky top-0 bg-meteo-primary shadow-lg">
+  <header class="sticky top-0 bg-meteo-primary shadow-emerald-900 shadow-lg ">
     <nav
       class="container flex flex-col sm:flex-row items-center gap-4 text-white py-9"
     >
       <RouterLink :to="{ name: 'home' }">
         <div class="flex items-center gap-3 flex-1">
           <i class="fa-solid fa-cloud-sun aria-hidden='true' fa-2xl"></i>
-          <span class="text-4xl text-meteo-secondary">MeteoApp</span>
+          <p class="text-4xl text-meteo-secondary">MeteoApp</p>
           <i class="fa-solid fa-temperature-half aria-hidden='true' fa-2xl"></i>
         </div>
       </RouterLink>
@@ -18,7 +18,7 @@
         ></i>
         <i
           class="fa-solid fa-square-plus aria-hidden='true' title='Zapisać tą miejscowość?' fa-2xl text-white hover:text-meteo-secondary duration-300 cursor-pointer"
-          @click="addCity"
+          @click="addLocality"
           v-if="route.query"
         ></i>
       </div>
@@ -69,12 +69,12 @@ import { ref } from "vue";
 import { uid } from "uid";
 import ModalWindow from "./ModalWindow.vue";
 
-const savedLocality = ref([]);
+const savedLocalities = ref([]);
 const route = useRoute();
 const router = useRouter();
 const addLocality = () => {
   if (localStorage.getItem("savedLocalities")) {
-    savedCities.value = JSON.parse(localStorage.getItem("savedLocalities"));
+    savedLocalities.value = JSON.parse(localStorage.getItem("savedLocalities"));
   }
   const localityObj = {
     id: uid(),
@@ -85,14 +85,16 @@ const addLocality = () => {
       lng: route.query.lng,
     },
   };
-  savedCities.value.push(localityObj);
-  localStorage.setItem("savedLocalities", JSON.stringify(savedLocalities.value));
+  savedLocalities.value.push(localityObj);
+  localStorage.setItem(
+    "savedLocalities",
+    JSON.stringify(savedLocalities.value)
+  );
   let query = Object.assign({}, route.query);
   delete query.preview;
   query.id = localityObj.id;
   router.replace({ query });
 };
-
 
 const modalActive = ref(null);
 const toggleModal = () => {

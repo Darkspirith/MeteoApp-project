@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col flex-1 items-center">
-
     <!-- Info banner -->
     <div
       v-if="route.query.preview"
@@ -16,7 +15,7 @@
         <!-- Locality name -->
         {{ route.params.city }}
       </h1>
-      
+
       <!-- Date -->
       <p class="text-sm mb-12">
         {{
@@ -27,7 +26,7 @@
               month: "long",
               year: "numeric",
             })
-            .replace(/^[a-z]/, function (firstLetter) {
+            .replace(/^[pwścsn]/, function (firstLetter) {
               return firstLetter.toUpperCase();
             })
         }}
@@ -45,11 +44,11 @@
 
       <!-- Current temperature -->
       <p class="text-8xl mb-8">
-        {{ Math.round(meteoData.current.temp) }} &degC
+        {{ (Math.round(meteoData.current.temp * 2) / 2) }} &degC
       </p>
       <p>
         Temperatura odczuwalna:
-        {{ Math.round(meteoData.current.feels_like) }} &degC
+        {{ Math.round(meteoData.current.feels_like * 2) / 2 }} &degC
       </p>
       <p class="first-letter:capitalize">
         {{ meteoData.current.weather[0].description }}
@@ -59,6 +58,8 @@
         :src="`http://openweathermap.org/img/wn/${meteoData.current.weather[0].icon}@2x.png`"
         alt=""
       />
+    
+    
     </div>
 
     <hr class="border-white border-opacity-10 border w-full" />
@@ -103,21 +104,27 @@
             <tr v-for="(day, index) in meteoData.daily" :key="day.dt">
               <td>
                 <p class="justify-start">
+
+                  <!-- Week -->
                   {{
                     index === 0
                       ? "Dzisiaj"
                       : index === 1
                       ? "Jutro"
-                      : new Date(day.dt * 1000).toLocaleDateString("pl-PL", {
-                          weekday: "long",
-                        }).replace(/^[pwścsn]/, function (firstLetter) {
-                          return firstLetter.toUpperCase();
-                        })
+                      : new Date(day.dt * 1000)
+                          .toLocaleDateString("pl-PL", {
+                            weekday: "long",
+                          })
+                          .replace(/^[pwścsn]/, function (firstLetter) {
+                            return firstLetter.toUpperCase();
+                          })
                   }}
                 </p>
               </td>
               <td class="p-2">
-                <p class="text-sm mr-2 first-letter:capitalize">{{ day.weather[0].description }}</p>
+                <p class="text-sm mr-2 first-letter:capitalize">
+                  {{ day.weather[0].description }}
+                </p>
               </td>
               <td class="p-2">
                 <img
@@ -126,17 +133,30 @@
                   alt=""
                 />
               </td>
-              <td class="p-2">
-                <div class="flex gap-2 justify-end">
-                  <p>{{ Math.round(day.temp.min) }} &degC</p>
-                  <span>-</span>
-                  <p>{{ Math.round(day.temp.max) }} &degC</p>
-                </div>
+              <td>
+
+                <!-- Min. and max. temperature -->
+                <p class="text-center">
+                  {{ Math.round(day.temp.min) }} &degC
+                  <span class="px-2">-</span
+                  >{{ Math.round(day.temp.max) }} &degC
+                </p>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
+    </div>
+
+    <!-- "Remove" button -->
+    <div
+      class="flex items-center gap-2 py-12 text-white cursor-pointer duration-300 hover:text-red-400"
+      @click="removeLocality"
+    >
+      <i
+        class="fa-solid fa-minus-square fa-xl aria-hidden='true' title='Usunąć tą miejscowość z zapisanych?'"
+      ></i>
+      <p>Usuń</p>
     </div>
   </div>
 </template>
@@ -174,10 +194,13 @@ const meteoData = await getMeteoData();
 const router = useRouter();
 const removeLocality = () => {
   const localities = JSON.parse(localStorage.getItem("savedLocalities"));
-  const updatedLocalities = cities.filter((city) => city.id !== route.query.id);
+  const updatedLocalities = localities.filter(
+    (city) => city.id !== route.query.id
+  );
   localStorage.setItem("savedLocalities", JSON.stringify(updatedLocalities));
   router.push({
     name: "home",
   });
 };
 </script>
+
