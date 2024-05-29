@@ -12,7 +12,7 @@
           >
             <slot />
             <button
-              class="mt-8  rounded-xl bg-emerald-700 py-3 px-6  text-white hover:bg-emerald-800 duration-300"
+              class="mt-8  rounded-lg bg-emerald-700 py-3 px-6  text-white hover:bg-emerald-800 duration-300"
               @click="$emit('close-modal')"
             >
               Zamknij

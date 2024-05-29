@@ -54,7 +54,7 @@ const previewLocality = (searchResult) => {
   });
 };
 
-// Space for API token.
+// Enter Mapbox API token
 const mapboxAPIKey = "";
 
 const searchQuery = ref("");

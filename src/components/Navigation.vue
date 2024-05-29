@@ -18,6 +18,8 @@
         ></i>
         <i
           class="fa-solid fa-square-plus aria-hidden='true' title='Zapisać tą miejscowość?' fa-2xl text-white hover:text-meteo-secondary duration-300 cursor-pointer"
+          @click="addCity"
+          v-if="route.query"
         ></i>
       </div>
 
@@ -62,9 +64,35 @@
 </template>
 
 <script setup>
+import { RouterLink, useRoute, useRouter } from "vue-router";
 import { ref } from "vue";
-import { RouterLink } from "vue-router";
+import { uid } from "uid";
 import ModalWindow from "./ModalWindow.vue";
+
+const savedLocality = ref([]);
+const route = useRoute();
+const router = useRouter();
+const addLocality = () => {
+  if (localStorage.getItem("savedLocalities")) {
+    savedCities.value = JSON.parse(localStorage.getItem("savedLocalities"));
+  }
+  const localityObj = {
+    id: uid(),
+    state: route.params.state,
+    city: route.params.city,
+    coords: {
+      lat: route.query.lat,
+      lng: route.query.lng,
+    },
+  };
+  savedCities.value.push(localityObj);
+  localStorage.setItem("savedLocalities", JSON.stringify(savedLocalities.value));
+  let query = Object.assign({}, route.query);
+  delete query.preview;
+  query.id = localityObj.id;
+  router.replace({ query });
+};
+
 
 const modalActive = ref(null);
 const toggleModal = () => {

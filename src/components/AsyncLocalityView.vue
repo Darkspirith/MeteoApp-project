@@ -13,7 +13,7 @@
 
     <div class="flex flex-col items-center text-white py-12">
       <h1 class="text-4xl mb-2">
-        <!-- Location name -->
+        <!-- Locality name -->
         {{ route.params.city }}
       </h1>
       
@@ -145,7 +145,7 @@
 import axios from "axios";
 import { useRoute, useRouter } from "vue-router";
 
-// Space for API token.
+// Enter OpenWeatherMap API token
 const openweathermapAPIKey = "";
 
 const route = useRoute();
@@ -172,10 +172,10 @@ const getMeteoData = async () => {
 };
 const meteoData = await getMeteoData();
 const router = useRouter();
-const removeCity = () => {
-  const cities = JSON.parse(localStorage.getItem("savedCities"));
-  const updatedCities = cities.filter((city) => city.id !== route.query.id);
-  localStorage.setItem("savedCities", JSON.stringify(updatedCities));
+const removeLocality = () => {
+  const localities = JSON.parse(localStorage.getItem("savedLocalities"));
+  const updatedLocalities = cities.filter((city) => city.id !== route.query.id);
+  localStorage.setItem("savedLocalities", JSON.stringify(updatedLocalities));
   router.push({
     name: "home",
   });
