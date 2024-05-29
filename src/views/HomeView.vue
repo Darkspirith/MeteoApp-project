@@ -24,7 +24,7 @@
             v-for="searchResult in geocodingResults"
             :key="searchResult.id"
             class="py-2 cursor-pointer"
-            @click="previewLocation(searchResult)"
+            @click="previewLocality(searchResult)"
           >
             {{ searchResult.place_name }}
           </li>
@@ -39,37 +39,13 @@ import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
-
-// Space for API token.
-const mapboxAPIKey = "";
-
 const router = useRouter();
 
-//  Cleans a search query by replacing diacritical characters with their non-diacritical counterparts.
-const cleanSearchQuery = (query) => {
-  const diacriticsMapping = {
-    "ą": "a",
-    "ć": "c",
-    "ę": "e",
-    "ł": "l",
-    "ń": "n",
-    "ó": "o",
-    "ś": "s",
-    "ź": "z",
-    "ż": "z",
-  };
-
-  const regex = /[ąćęłńóśźż]/g;
-  return query.replace(regex, (match) => diacriticsMapping[match]);
-};
-
-const previewLocation = (searchResult) => {
-  const cleanedCity = cleanSearchQuery(searchResult.place_name.split(",")[0]);
-  const cleanedState = cleanSearchQuery(searchResult.place_name.split(",")[1]);
-
+const previewLocality = (searchResult) => {
+  const [locality, region] = searchResult.place_name.split(",");
   router.push({
     name: "LocalityView",
-    params: { state: cleanedState.replaceAll(" ", ""), city: cleanedCity.replaceAll(" ", "") },
+    params: { state: region.replaceAll(" ", ""), city: locality },
     query: {
       lat: searchResult.geometry.coordinates[1],
       lng: searchResult.geometry.coordinates[0],
@@ -77,6 +53,9 @@ const previewLocation = (searchResult) => {
     },
   });
 };
+
+// Space for API token.
+const mapboxAPIKey = "";
 
 const searchQuery = ref("");
 const queryTimeout = ref(null);

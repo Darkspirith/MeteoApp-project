@@ -10,12 +10,14 @@
 
     <!-- Weather panel -->
     <div class="flex flex-col items-center text-white py-12">
+      
       <h1 class="text-4xl mb-2">
-        <!-- For location names with multiple parts -->
-        {{ route.params.city.replace(/([a-z])([A-Z])/g, "$1 $2") }}
+        <!-- Location name. Also for location name with multiple parts -->
+        {{ route.params.city }}
       </h1>
+      
+      <!-- Date -->
       <p class="text-sm mb-12">
-        <!-- Date -->
         {{
           new Date(meteoData.currentTime)
             .toLocaleDateString("pl-PL", {
@@ -117,9 +119,9 @@
           />
 
           <div class="flex gap-2 flex-1 justify-end">
-            <p>{{ Math.round(day.temp.min) }}&degC</p>
+            <p>{{ Math.round(day.temp.min) }} &degC</p>
             <span>-</span>
-            <p>{{ Math.round(day.temp.max) }}&degC</p>
+            <p>{{ Math.round(day.temp.max) }} &degC</p>
           </div>
         </div>
       </div>
