@@ -44,11 +44,23 @@
 
       <!-- Current temperature -->
       <p class="text-8xl mb-8">
-        {{ (Math.round(meteoData.current.temp * 2) / 2) }} &degC
+        {{
+          (Math.round(meteoData.current.temp * 2) / 2)
+            .toFixed(1)
+            .replace(".", ",")
+            .replace(/,0*$/, "")
+        }}
+        &degC
       </p>
       <p>
         Temperatura odczuwalna:
-        {{ Math.round(meteoData.current.feels_like * 2) / 2 }} &degC
+        {{
+          (Math.round(meteoData.current.feels_like * 2) / 2)
+            .toFixed(1)
+            .replace(".", ",")
+            .replace(/,0*$/, "")
+        }}
+        &degC
       </p>
       <p class="first-letter:capitalize">
         {{ meteoData.current.weather[0].description }}
@@ -58,21 +70,21 @@
         :src="`http://openweathermap.org/img/wn/${meteoData.current.weather[0].icon}@2x.png`"
         alt=""
       />
-    
-    
     </div>
 
     <hr class="border-white border-opacity-10 border w-full" />
 
     <!-- Hourly weather -->
-    <div class="max-w-screen-md w-full py-12">
+    <div
+      class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm w-full py-12"
+    >
       <div class="mx-8 text-white">
         <h2 class="mb-4">Prognoza godzinowa:</h2>
-        <div class="flex gap-10 overflow-x-scroll">
+        <div class="flex gap-10 overflow-x-auto">
           <div
             v-for="hourData in meteoData.hourly"
             :key="hourData.dt"
-            class="flex flex-col gap-4 items-center"
+            class="flex flex-col gap-4 items-center py-"
           >
             <p class="whitespace-nowrap text-md">
               {{
@@ -88,6 +100,9 @@
               alt=""
             />
             <p class="text-md">{{ Math.round(hourData.temp) }} &degC</p>
+            <p class="first-letter:capitalize">
+              {{ hourData.weather[0].description }}
+            </p>
           </div>
         </div>
       </div>
@@ -96,15 +111,16 @@
     <hr class="border-white border-opacity-10 border w-full" />
 
     <!-- Weather for the coming 7 days -->
-    <div class="max-w-screen-md w-full py-12">
+    <div
+      class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm w-full py-12"
+    >
       <div class="mx-8 text-white">
         <h2 class="mb-4">Prognoza 7-dniowa:</h2>
-        <table class="w-full">
+        <table class="w-full ml-10">
           <tbody>
             <tr v-for="(day, index) in meteoData.daily" :key="day.dt">
               <td>
                 <p class="justify-start">
-
                   <!-- Week -->
                   {{
                     index === 0
@@ -134,11 +150,9 @@
                 />
               </td>
               <td>
-
                 <!-- Min. and max. temperature -->
                 <p class="text-center">
-                  {{ Math.round(day.temp.min) }} &degC
-                  <span class="px-2">-</span
+                  {{ Math.round(day.temp.min) }} &degC<span class="px-2">-</span
                   >{{ Math.round(day.temp.max) }} &degC
                 </p>
               </td>
@@ -203,4 +217,3 @@ const removeLocality = () => {
   });
 };
 </script>
-
