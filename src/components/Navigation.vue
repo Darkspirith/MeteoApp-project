@@ -13,7 +13,7 @@
           <i
             class="fa-solid fa-cloud-sun aria-hidden='true' fa-2xl"
             aria-hidden="true"
-/>
+          />
           <p
             class="text-4xl text-meteo-secondary"
             aria-label="MeteoApp - aplikacja pogodowa"
@@ -27,17 +27,18 @@
         </div>
       </RouterLink>
 
-      <div class="flex flex-1 justify-end xs:pr-0 gap-7">
+      <!-- Nav buttons -->
+      <div
+        class="flex flex-1 justify-end gap-7 lg:pt-0 md:pt-0 sm:pt-5 xs:pt-5 lg:pr-2 md:pr-2 sm:pr-0 xs:pr-0"
+      >
         <i
           class="fa-solid fa-question aria-hidden='true' title='Jak korzystać z aplikacji?'
            fa-2xl text-gray-300 hover:text-yellow-500 hover:scale-110 duration-300 cursor-pointer"
-           
           @click="toggleModal"
         ></i>
         <i
           class="fa-solid fa-square-plus aria-hidden='true' title='Zapisać tą miejscowość?'
            fa-2xl text-white hover:text-meteo-secondary duration-300 cursor-pointer"
-
           @click="addLocality"
           v-if="route.query.preview"
         ></i>
@@ -94,6 +95,8 @@ import ModalWindow from "./ModalWindow.vue";
 const savedLocalities = ref([]);
 const route = useRoute();
 const router = useRouter();
+
+// Add localities to localStorage
 const addLocality = () => {
   if (localStorage.getItem("savedLocalities")) {
     savedLocalities.value = JSON.parse(localStorage.getItem("savedLocalities"));
@@ -119,6 +122,8 @@ const addLocality = () => {
 };
 
 const modalActive = ref(null);
+
+// Modal window
 const toggleModal = () => {
   modalActive.value = !modalActive.value;
 };

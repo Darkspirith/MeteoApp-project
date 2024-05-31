@@ -3,11 +3,13 @@
     <LocalityCard :city="city" @click="goToLocalityView(city)" />
   </div>
 
-
-  <p v-if="savedLocalities.length === 0" class="text-center text-lg py-10 my-10">
+  <!-- If there are no saved localities :( -->
+  <p
+    v-if="savedLocalities.length === 0"
+    class="text-center text-lg py-10 my-10"
+  >
     Wygląda na to, że nie masz zapisanych lokalizacji. Czas to zmienić!
   </p>
-
 </template>
 
 <script setup>
@@ -21,6 +23,7 @@ import LocalityCard from "./LocalityCard.vue";
 const openweathermapAPIKey = "";
 
 const savedLocalities = ref([]);
+
 const getLocalities = async () => {
   if (localStorage.getItem("savedLocalities")) {
     savedLocalities.value = JSON.parse(localStorage.getItem("savedLocalities"));
@@ -44,6 +47,7 @@ const getLocalities = async () => {
 await getLocalities();
 
 const router = useRouter();
+
 const goToLocalityView = (city) => {
   router.push({
     name: "LocalityView",

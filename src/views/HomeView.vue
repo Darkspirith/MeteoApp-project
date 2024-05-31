@@ -32,7 +32,9 @@
         </template>
       </ul>
 
-      <div class="flex flex-col gap-4">
+      <div
+        class="flex flex-col gap-3 lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm xs:max-w-screen-xs"
+      >
         <Suspense>
           <TrackedLocalities />
           <template #fallback>
@@ -70,6 +72,7 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
+// Preview locality (search result)
 const previewLocality = (searchResult) => {
   const [locality, region] = searchResult.place_name.split(",");
   router.push({
@@ -91,13 +94,13 @@ const queryTimeout = ref(null);
 const geocodingResults = ref(null);
 const searchError = ref(null);
 
+// Asynchronous request to the geocoding API to get search results for the current search query.
 const getSearchResults = () => {
   queryTimeout.value = setTimeout(async () => {
     if (searchQuery.value !== "") {
       try {
         const result = await axios.get(
           `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery.value}.json?access_token=${mapboxAPIKey}&limit=7&types=place&language=pl`
-         
         );
         geocodingResults.value = result.data.features;
       } catch {
@@ -112,4 +115,3 @@ const getSearchResults = () => {
 </script>
 
 <style lang="scss" scoped></style>
-

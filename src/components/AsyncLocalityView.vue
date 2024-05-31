@@ -12,6 +12,7 @@
 
     <div class="flex flex-col items-center text-white py-12">
       <h1 class="text-4xl mb-2">
+
         <!-- Locality name -->
         {{ route.params.city }}
       </h1>
@@ -62,6 +63,8 @@
         }}
         &degC
       </p>
+
+      <!-- Weather description and icon -->
       <p class="first-letter:capitalize">
         {{ meteoData.current.weather[0].description }}
       </p>
@@ -72,7 +75,9 @@
       />
     </div>
 
-    <hr class="border-meteo-tertiary border-opacity-50 border-2 border-dashed w-full my-6" />
+    <hr
+      class="border-meteo-tertiary border-opacity-50 border-2 border-dashed w-full my-6"
+    />
 
     <!-- Hourly weather -->
     <div
@@ -94,13 +99,15 @@
                 })
               }}
             </p>
+
+            <!-- Hourly weather icon -->
             <img
               class="w-auto h-[50px] object-cover"
               :src="`http://openweathermap.org/img/wn/${hourData.weather[0].icon}@2x.png`"
               alt=""
             />
             <p class="text-md">{{ Math.round(hourData.temp) }} &degC</p>
-           
+
             <!-- Hourly weather description -->
             <p class="text-center py-7">
               {{ hourData.weather[0].description }}
@@ -110,20 +117,22 @@
       </div>
     </div>
 
-    <hr class="border-meteo-tertiary border-opacity-50 border-2 border-dashed w-full my-6" />
+    <hr
+      class="border-meteo-tertiary border-opacity-50 border-2 border-dashed w-full my-6"
+    />
 
     <!-- Weather for the coming 7 days -->
     <div
       class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm w-full py-12"
     >
       <div class="mx-8 text-white">
-        <h2 class="mb-4">Prognoza 7-dniowa:</h2>
+        <h2 class="mb-4 text-lg py-4">Prognoza 7-dniowa:</h2>
         <table class="w-full ml-10">
           <tbody>
             <tr v-for="(day, index) in meteoData.daily" :key="day.dt">
               <td>
                 <p class="justify-start">
-                  
+
                   <!-- Week -->
                   {{
                     index === 0
@@ -207,13 +216,18 @@ const getMeteoData = async () => {
     console.log(err);
   }
 };
+
+// Get weather data
 const meteoData = await getMeteoData();
 const router = useRouter();
+
+// Remove locality from local storage
 const removeLocality = () => {
   const localities = JSON.parse(localStorage.getItem("savedLocalities"));
   const updatedLocalities = localities.filter(
     (city) => city.id !== route.query.id
   );
+  // Update local storage
   localStorage.setItem("savedLocalities", JSON.stringify(updatedLocalities));
   router.push({
     name: "home",
