@@ -1,15 +1,16 @@
 <template>
   <main class="container text-white">
-    <div class="pt-4 mb-8 relative">
+    <div class="py-10 my-1 mb-8 relative">
       <input
         type="text"
         v-model="searchQuery"
         @input="getSearchResults"
         placeholder="Wpisz nazwę miejscowości..."
         class="py-2 px-5 w-full rounded-lg bg-transparent border focus:border-meteo-secondary focus:outline"
+        autofocus
       />
       <ul
-        class="absolute rounded-md bg-emerald-900 text-white w-full shadow-md py-2 px-1 top-[72px]"
+        class="absolute rounded-md bg-emerald-900 text-white w-full shadow-md py-2 px-2 my-3"
         v-if="geocodingResults"
       >
         <p v-if="searchError">
@@ -23,8 +24,8 @@
           <li
             v-for="searchResult in geocodingResults"
             :key="searchResult.id"
-            class="py-2 cursor-pointer"
             @click="previewLocality(searchResult)"
+            class="p-2 cursor-pointer hover:bg-meteo-tertiary rounded-lg"
           >
             {{ searchResult.place_name }}
           </li>
@@ -95,7 +96,8 @@ const getSearchResults = () => {
     if (searchQuery.value !== "") {
       try {
         const result = await axios.get(
-          `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery.value}.json?access_token=${mapboxAPIKey}&limit=10&types=place&language=pl`
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery.value}.json?access_token=${mapboxAPIKey}&limit=7&types=place&language=pl`
+         
         );
         geocodingResults.value = result.data.features;
       } catch {
@@ -110,3 +112,4 @@ const getSearchResults = () => {
 </script>
 
 <style lang="scss" scoped></style>
+
