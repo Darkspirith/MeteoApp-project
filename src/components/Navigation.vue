@@ -13,7 +13,7 @@
           <i
             class="fa-solid fa-cloud-sun aria-hidden='true' fa-2xl"
             aria-hidden="true"
-          />
+/>
           <p
             class="text-4xl text-meteo-secondary"
             aria-label="MeteoApp - aplikacja pogodowa"
@@ -27,15 +27,19 @@
         </div>
       </RouterLink>
 
-      <div class="flex gap-5 flex-1 justify-end">
+      <div class="flex flex-1 justify-end xs:pr-0 gap-7">
         <i
-          class="fa-solid fa-question aria-hidden='true' title='Jak korzystać z aplikacji?' fa-2xl text-gray-300 hover:text-yellow-500 hover:scale-110 duration-300 cursor-pointer"
+          class="fa-solid fa-question aria-hidden='true' title='Jak korzystać z aplikacji?'
+           fa-2xl text-gray-300 hover:text-yellow-500 hover:scale-110 duration-300 cursor-pointer"
+           
           @click="toggleModal"
         ></i>
         <i
-          class="fa-solid fa-square-plus aria-hidden='true' title='Zapisać tą miejscowość?' fa-2xl text-white hover:text-meteo-secondary duration-300 cursor-pointer"
+          class="fa-solid fa-square-plus aria-hidden='true' title='Zapisać tą miejscowość?'
+           fa-2xl text-white hover:text-meteo-secondary duration-300 cursor-pointer"
+
           @click="addLocality"
-          v-if="route.query"
+          v-if="route.query.preview"
         ></i>
       </div>
 
@@ -62,9 +66,9 @@
               <i
                 class="fa-solid fa-square-plus aria-hidden:'true' title:'Ikona - znak plus' fa-lg px-1"
               ></i>
-              w prawym górnym rogu.
-             Dane pogodowe dla wybranego miejsca będą teraz zawsze na
-              wyciągnięcie ręki. Znajdziesz je na stronie głównej. Klikając w logo
+              w prawym górnym rogu. Dane pogodowe dla wybranego miejsca będą
+              teraz zawsze na wyciągnięcie ręki. Znajdziesz je na stronie
+              głównej. Klikając w logo
               <span class="text-meteo-secondary">MeteoApp</span> powrócisz do
               niej.
             </li>

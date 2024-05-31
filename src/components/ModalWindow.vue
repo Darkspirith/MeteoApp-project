@@ -3,12 +3,12 @@
     <Transition name="modal-outer">
       <div
         v-show="modalActive"
-        class="absolute w-full bg-black bg-opacity-50 h-screen top-1 left-0 flex justify-center"
+        class="fixed inset-0 flex items-center justify-center bg-black/80 mt-1"
       >
         <Transition name="modal-inner">
           <div
             v-if="modalActive"
-            class="rounded-lg p-4 bg-neutral-700 self-start max-w-screen-md mx-3 lg:mt-32 md:mt-32 sm:mt-5 overflow-auto"
+            class="rounded-lg p-5 bg-neutral-700 self-start max-w-screen-md mx-3 lg:mt-32 md:mt-32 sm:mt-5 overflow-auto"
           >
             <slot />
             <button

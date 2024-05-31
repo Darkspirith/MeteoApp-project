@@ -52,7 +52,7 @@
         }}
         &degC
       </p>
-      <p>
+      <p class="text-lg mb-8">
         Temperatura odczuwalna:
         {{
           (Math.round(meteoData.current.feels_like * 2) / 2)
@@ -72,14 +72,14 @@
       />
     </div>
 
-    <hr class="border-white border-opacity-10 border w-full" />
+    <hr class="border-meteo-tertiary border-opacity-50 border-2 border-dashed w-full my-6" />
 
     <!-- Hourly weather -->
     <div
-      class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm w-full py-12"
+      class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm w-full mb-2 py-15"
     >
       <div class="mx-8 text-white">
-        <h2 class="mb-4">Prognoza godzinowa:</h2>
+        <h2 class="mb-4 text-lg py-4">Prognoza godzinowa:</h2>
         <div class="flex gap-10 overflow-x-auto">
           <div
             v-for="hourData in meteoData.hourly"
@@ -100,9 +100,9 @@
               alt=""
             />
             <p class="text-md">{{ Math.round(hourData.temp) }} &degC</p>
-
-            <!-- Hourly weather description for screen readers -->
-            <p class="sr-only" v-if="!isScreenReader">
+           
+            <!-- Hourly weather description -->
+            <p class="text-center py-7">
               {{ hourData.weather[0].description }}
             </p>
           </div>
@@ -110,7 +110,7 @@
       </div>
     </div>
 
-    <hr class="border-white border-opacity-10 border w-full" />
+    <hr class="border-meteo-tertiary border-opacity-50 border-2 border-dashed w-full my-6" />
 
     <!-- Weather for the coming 7 days -->
     <div
@@ -123,6 +123,7 @@
             <tr v-for="(day, index) in meteoData.daily" :key="day.dt">
               <td>
                 <p class="justify-start">
+                  
                   <!-- Week -->
                   {{
                     index === 0
@@ -166,13 +167,13 @@
 
     <!-- "Remove" button -->
     <div
-      class="flex items-center gap-2 py-12 text-white cursor-pointer duration-300 hover:text-red-400"
+      class="flex items-center gap-2 py-12 mb-5 text-white cursor-pointer duration-300 hover:text-red-400"
       @click="removeLocality"
     >
       <i
-        class="fa-solid fa-minus-square fa-xl aria-hidden='true' title='Usunąć tą miejscowość z zapisanych?'"
+        class="fa-solid fa-minus-square fa-2xl aria-hidden='true' title='Usunąć tą miejscowość z zapisanych?'"
       ></i>
-      <p>Usuń</p>
+      <p class="text-2xl">Usuń</p>
     </div>
   </div>
 </template>

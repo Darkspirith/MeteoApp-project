@@ -1,16 +1,16 @@
 <template>
-  <main class="container text-white">
-    <div class="py-10 my-1 mb-8 relative">
+  <main class="container text-white mb-10">
+    <div class="py-10 relative">
       <input
         type="text"
         v-model="searchQuery"
         @input="getSearchResults"
         placeholder="Wpisz nazwę miejscowości..."
-        class="py-2 px-5 w-full rounded-lg bg-transparent border focus:border-meteo-secondary focus:outline"
+        class="py-4 px-5 w-full rounded-lg bg-transparent border focus:border-meteo-secondary focus:outline mb-10"
         autofocus
       />
       <ul
-        class="absolute rounded-md bg-emerald-900 text-white w-full shadow-md py-2 px-2 my-3"
+        class="absolute rounded-md bg-emerald-900 text-white w-full shadow-md py-2 px-2 top-28"
         v-if="geocodingResults"
       >
         <p v-if="searchError">
@@ -25,7 +25,7 @@
             v-for="searchResult in geocodingResults"
             :key="searchResult.id"
             @click="previewLocality(searchResult)"
-            class="p-2 cursor-pointer hover:bg-meteo-tertiary rounded-lg"
+            class="p-2 cursor-pointer bg hover:bg-meteo-tertiary rounded-lg"
           >
             {{ searchResult.place_name }}
           </li>
@@ -74,7 +74,7 @@ const previewLocality = (searchResult) => {
   const [locality, region] = searchResult.place_name.split(",");
   router.push({
     name: "LocalityView",
-    params: { state: region.replaceAll(" ", ""), city: locality },
+    params: { state: region, city: locality },
     query: {
       lat: searchResult.geometry.coordinates[1],
       lng: searchResult.geometry.coordinates[0],
