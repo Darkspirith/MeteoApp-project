@@ -100,7 +100,9 @@
               alt=""
             />
             <p class="text-md">{{ Math.round(hourData.temp) }} &degC</p>
-            <p class="first-letter:capitalize">
+
+            <!-- Hourly weather description for screen readers-->
+            <p class="sr-only" v-if="!isScreenReader">
               {{ hourData.weather[0].description }}
             </p>
           </div>
@@ -186,7 +188,7 @@ const route = useRoute();
 const getMeteoData = async () => {
   try {
     const meteoData = await axios.get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${route.query.lat}&lon=${route.query.lng}&exclude={part}&appid=${openweathermapAPIKey}&units=metric&lang=pl`
+      `https://api.openweathermap.org/data/3.0/onecall?lat=${route.query.lat}&lon=${route.query.lng}&exclude={part}&appid=${openweathermapAPIKey}&units=metric&lang=pl`
     );
 
     // Current date and time
