@@ -1,13 +1,29 @@
 <template>
-  <header class="sticky top-0 bg-meteo-primary shadow-emerald-900 shadow-lg ">
+  <header class="sticky top-0 bg-meteo-primary shadow-emerald-900 shadow-lg">
     <nav
       class="container flex flex-col sm:flex-row items-center gap-4 text-white py-9"
     >
-      <RouterLink :to="{ name: 'home' }">
+      <RouterLink
+        :to="{ name: 'home' }"
+        role="link"
+        aria-label="Strona główna"
+        class="hover:scale-105 duration-500"
+      >
         <div class="flex items-center gap-3 flex-1">
-          <i class="fa-solid fa-cloud-sun aria-hidden='true' fa-2xl"></i>
-          <p class="text-4xl text-meteo-secondary">MeteoApp</p>
-          <i class="fa-solid fa-temperature-half aria-hidden='true' fa-2xl"></i>
+          <i
+            class="fa-solid fa-cloud-sun aria-hidden='true' fa-2xl"
+            aria-hidden="true"
+          />
+          <p
+            class="text-4xl text-meteo-secondary"
+            aria-label="MeteoApp - aplikacja pogodowa"
+          >
+            MeteoApp
+          </p>
+          <i
+            class="fa-solid fa-temperature-half aria-hidden='true' fa-2xl"
+            aria-hidden="true"
+          />
         </div>
       </RouterLink>
 
@@ -31,28 +47,30 @@
             miejscowości.
           </h1>
           <h2 class="text-2xl mb-3">Jak to działa?</h2>
-          <ol class="list-decimal list-inside mb-4">
-            <li>
+          <ol class="list-decimal list-inside">
+            <li class="mb-1">
               Znajdź wybraną miejscowość, wpisując jej nazwę w pasek
               wyszukiwania.
             </li>
-            <li>
+            <li class="mb-1">
               Po wybraniu miejscowości otrzymasz dane pogodowe dla tej
               lokalizacji.
             </li>
-            <li>
+            <li class="mb-1">
               Możesz zapisać wybrane miejscowości. Wystarczy, że klikniesz
               ikonkę
               <i
-                class="fa-solid fa-square-plus aria-hidden:'true' title:'Na ikonie widnieje znak plus' fa-lg px-1"
+                class="fa-solid fa-square-plus aria-hidden:'true' title:'Ikona - znak plus' fa-lg px-1"
               ></i>
-              w prawym górnym rogu. Dane pogodowe dla wybranego miejsca będą
-              teraz zawsze na wyciągnięcie ręki. Znajdziesz je na stronie
-              głównej.
+              w prawym górnym rogu.
+             Dane pogodowe dla wybranego miejsca będą teraz zawsze na
+              wyciągnięcie ręki. Znajdziesz je na stronie głównej. Klikając w logo
+              <span class="text-meteo-secondary">MeteoApp</span> powrócisz do
+              niej.
             </li>
           </ol>
 
-          <h3 class="text-xl mt-5 mb-2">Jak usunąć zapisaną miejscowość?</h3>
+          <h3 class="text-xl mt-6 mb-2">Jak usunąć zapisaną miejscowość?</h3>
           <p>
             Kliknij na wybraną zapisaną miejscowość. Na dole strony znajdziesz
             przycisk "Usuń".

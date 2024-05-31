@@ -101,7 +101,7 @@
             />
             <p class="text-md">{{ Math.round(hourData.temp) }} &degC</p>
 
-            <!-- Hourly weather description for screen readers-->
+            <!-- Hourly weather description for screen readers -->
             <p class="sr-only" v-if="!isScreenReader">
               {{ hourData.weather[0].description }}
             </p>

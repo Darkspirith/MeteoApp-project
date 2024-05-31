@@ -3,16 +3,16 @@
     <Transition name="modal-outer">
       <div
         v-show="modalActive"
-        class="absolute w-full bg-black bg-opacity-50 h-screen top-0 left-0 flex justify-center px-8"
+        class="absolute w-full bg-black bg-opacity-50 h-screen top-0 left-0 flex justify-center"
       >
         <Transition name="modal-inner">
           <div
             v-if="modalActive"
-            class="p-4 rounded-lg bg-neutral-700 self-start mt-32 max-w-screen-md"
+            class="p-4 rounded-lg bg-neutral-700 self-start mt-32 max-w-screen-lg overflow-auto"
           >
             <slot />
             <button
-              class="mt-8  rounded-lg bg-emerald-700 py-3 px-6  text-white hover:bg-emerald-800 duration-300"
+              class="mt-8 text-md rounded-lg bg-emerald-700 py-3 px-8 text-white hover:bg-meteo-tertiary duration-300"
               @click="$emit('close-modal')"
             >
               Zamknij

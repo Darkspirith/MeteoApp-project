@@ -1,22 +1,31 @@
 <template>
-  <footer class="text-center text-sm py-4 text-white bg-meteo-primary sticky top-0 shadow-emerald-900 shadow-lg ">
-    <p class="">
-      Made with <i class="fa-solid fa-heart text-meteo-secondary px-1"></i> in
-      Bytom.
-      <span class="px-10"
+  <footer class="text-white bg-meteo-primary">
+    <div
+      class="flex justify-center text-center lg:text-base md:text-sm sm:text-xs xs:text-xs mx-5 py-3"
+    >
+      <p
+        >Made with
+        <i
+          class="fa-solid fa-heart aria-hidden:true title='love' text-meteo-secondary px-1"
+        >
+          <span class="sr-only">love</span>
+
+        </i>
+        in Bytom</p
+      >
+
+      <p class="px-5"
         >Dane pogodowe dostarcza
         <a class="font-bold" href="https://openweathermap.org/"
           >OpenWeatherMap</a
-        >.</span
+        ></p
       >
-      <span
+      <p
         >Geokodowanie napędza
         <a class="font-bold" href="http://mapbox.com/about/maps">Mapbox</a>
-        .</span
-      >
-    </p>
+      </p>
+    </div>
   </footer>
 </template>
 
-<script setup>
-</script>
+<script setup></script>

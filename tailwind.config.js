@@ -5,6 +5,7 @@ module.exports = {
       colors: {
         "meteo-primary": "#27272a",
         "meteo-secondary": "#10b981",
+        "meteo-tertiary": "#065f46",
       },
     },
     fontFamily: {
@@ -15,6 +16,7 @@ module.exports = {
       center: true,
     },
     screens: {
+      xs: "320px",
       sm: "640px",
       md: "768px",
       lg: "1024px",

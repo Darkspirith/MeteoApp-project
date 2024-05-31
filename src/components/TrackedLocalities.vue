@@ -3,9 +3,11 @@
     <LocalityCard :city="city" @click="goToLocalityView(city)" />
   </div>
 
-  <p v-if="savedLocalities.length === 0">
-    Wygląda na to, że nie masz zapisanych lokalizacji.
+
+  <p v-if="savedLocalities.length === 0" class="text-center text-lg py-10 my-10">
+    Wygląda na to, że nie masz zapisanych lokalizacji. Czas to zmienić!
   </p>
+
 </template>
 
 <script setup>
