@@ -10,7 +10,7 @@
         autofocus
       />
       <ul
-        class="absolute rounded-md bg-emerald-900 text-white w-full shadow-md py-2 px-2 top-28"
+        class="absolute rounded-md bg-neutral-700 text-white w-full shadow-md py-2 px-2 top-28"
         v-if="geocodingResults"
       >
         <p v-if="searchError">

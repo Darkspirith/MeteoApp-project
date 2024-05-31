@@ -48,8 +48,7 @@
         <div class="text-white">
           <h1 class="text-xl mt-2 mb-7">
             <span class="text-meteo-secondary">MeteoApp</span> pozwala na
-            śledzenie obecniej i prognozowanej pogody dla wybranych
-            miejscowości.
+            śledzenie obecnej i prognozowanej pogody.
           </h1>
           <h2 class="text-2xl mb-3">Jak to działa?</h2>
           <ol class="list-decimal list-inside">
