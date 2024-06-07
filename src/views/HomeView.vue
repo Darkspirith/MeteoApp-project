@@ -6,7 +6,7 @@
         v-model="searchQuery"
         @input="getSearchResults"
         placeholder="Wpisz nazwę miejscowości..."
-        class="py-4 px-5 w-full rounded-lg bg-transparent border focus:border-meteo-secondary focus:outline mb-10"
+        class="py-4 px-4 w-full rounded-lg bg-transparent border focus:border-meteo-secondary focus:outline mb-10"
         autofocus
       />
       <ul

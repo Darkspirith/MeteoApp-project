@@ -12,7 +12,6 @@
 
     <div class="flex flex-col items-center text-white py-12">
       <h1 class="text-4xl mb-2">
-
         <!-- Locality name -->
         {{ route.params.city }}
       </h1>
@@ -81,7 +80,7 @@
 
     <!-- Hourly weather -->
     <div
-      class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm w-full mb-2 py-15"
+      class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm xs:w-screen-xs w-full mb-2 py-15"
     >
       <div class="mx-8 text-white">
         <h2 class="mb-4 text-lg py-4">Prognoza godzinowa:</h2>
@@ -123,11 +122,11 @@
 
     <!-- Weather for the coming 7 days -->
     <div
-      class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm w-full py-12"
+      class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm xs:w-screen-xs w-full py-7"
     >
-      <div class="mx-8 text-white">
+      <div class="mx-6 text-white">
         <h2 class="mb-4 text-lg py-4">Prognoza 7-dniowa:</h2>
-        <table class="w-full ml-10">
+        <table class="w-full">
           <tbody>
             <tr v-for="(day, index) in meteoData.daily" :key="day.dt">
               <td>
@@ -162,6 +161,7 @@
                 />
               </td>
               <td>
+
                 <!-- Min. and max. temperature -->
                 <p class="text-center">
                   {{ Math.round(day.temp.min) }} &degC<span class="px-2">-</span
@@ -227,7 +227,6 @@ const removeLocality = () => {
   const updatedLocalities = localities.filter(
     (city) => city.id !== route.query.id
   );
-  // Update local storage
   localStorage.setItem("savedLocalities", JSON.stringify(updatedLocalities));
   router.push({
     name: "home",

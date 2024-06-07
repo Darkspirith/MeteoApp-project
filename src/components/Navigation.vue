@@ -9,6 +9,8 @@
         aria-label="Strona główna"
         class="hover:scale-105 duration-500"
       >
+
+      <!-- Logo -->
         <div class="flex items-center gap-3 flex-1">
           <i
             class="fa-solid fa-cloud-sun aria-hidden='true' fa-2xl"

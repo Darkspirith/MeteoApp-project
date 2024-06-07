@@ -9,13 +9,13 @@
       <p>
         Made with
         <i
-          class="fa-solid fa-heart aria-hidden:true title='love' text-meteo-secondary px-1"
+          class="fa-solid fa-heart aria-hidden:true title='love' text-meteo-secondary hover:text-red-800 duration-500 px-1"
         >
           <span class="sr-only">love</span>
         </i>
         in Bytom
       </p>
-      <p class="lg:px-22 md:px-16 sm:px-8 xs:px-2">
+      <p class="lg:px-24 md:px-16 sm:px-8 xs:px-2">
         Dane pogodowe dostarcza
         <a class="font-bold" href="https://openweathermap.org/"
           >OpenWeatherMap</a

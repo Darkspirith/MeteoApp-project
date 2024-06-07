@@ -8,7 +8,7 @@
     v-if="savedLocalities.length === 0"
     class="text-center text-lg py-10 my-10"
   >
-    Wygląda na to, że nie masz zapisanych lokalizacji. Czas to zmienić!
+    Wygląda na to, że nie masz zapisanych miejscowości. Czas to zmienić!
   </p>
 </template>
 
