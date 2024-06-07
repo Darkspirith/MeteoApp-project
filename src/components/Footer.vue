@@ -4,7 +4,7 @@
     style="box-shadow: 0 3px 9px 0 rgba(233, 233, 233, 1)"
   >
     <div
-      class="flex justify-center text-center lg:text-base md:text-sm sm:text-xs xs:text-xs mx-5 py-4"
+      class="flex justify-center text-center lg:text-base md:text-sm sm:text-xs xs:text-xs py-4 px-3"
     >
       <p>
         Made with
@@ -15,7 +15,7 @@
         </i>
         in Bytom
       </p>
-      <p class="px-16">
+      <p class="lg:px-22 md:px-16 sm:px-8 xs:px-2">
         Dane pogodowe dostarcza
         <a class="font-bold" href="https://openweathermap.org/"
           >OpenWeatherMap</a
