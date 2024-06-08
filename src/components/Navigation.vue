@@ -34,12 +34,12 @@
         class="flex flex-1 justify-end gap-7 lg:pt-0 md:pt-0 sm:pt-5 xs:pt-5 lg:pr-2 md:pr-2 sm:pr-0 xs:pr-0"
       >
         <i
-          class="fa-solid fa-question aria-hidden='true' title='Jak korzystać z aplikacji?'
+          class="fa-solid fa-question aria-hidden='true' title='Jak korzystać z aplikacji? Ikona - znak zapytania'
            fa-2xl text-gray-300 hover:text-yellow-500 hover:scale-110 duration-300 cursor-pointer"
           @click="toggleModal"
         ></i>
         <i
-          class="fa-solid fa-square-plus aria-hidden='true' title='Zapisać tą miejscowość?'
+          class="fa-solid fa-square-plus aria-hidden='true' title='Zapisać tą miejscowość? Ikona - znak plus'
            fa-2xl text-white hover:text-meteo-secondary duration-300 cursor-pointer"
           @click="addLocality"
           v-if="route.query.preview"

@@ -5,7 +5,13 @@
       v-if="route.query.preview"
       class="text-white p-4 bg-emerald-700 w-full text-center"
     >
-      <p>Kliknij "+", aby zacząć śledzić pogodę dla tej miejscowości.</p>
+      <p>
+        Kliknij
+        <span
+          class="fa-solid fa-square-plus aria-hidden:'true' title:'Ikona - znak plus' fa-lg px-1"
+        ></span
+        >, aby zacząć śledzić pogodę dla tej miejscowości.
+      </p>
     </div>
 
     <!-- Weather panel -->
@@ -125,7 +131,7 @@
       class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm xs:w-screen-xs w-full py-7"
     >
       <div class="mx-6 text-white">
-        <h2 class="mb-4 text-lg py-4">Prognoza 7-dniowa:</h2>
+        <h2 class="mb-3 text-lg py-4">Prognoza 7-dniowa:</h2>
         <table class="w-full">
           <tbody>
             <tr v-for="(day, index) in meteoData.daily" :key="day.dt">
@@ -148,8 +154,8 @@
                   }}
                 </p>
               </td>
-              <td class="p-2">
-                <p class="text-sm mr-2 first-letter:capitalize">
+              <td class="pl-4">
+                <p class="text-sm px-1 first-letter:capitalize">
                   {{ day.weather[0].description }}
                 </p>
               </td>
@@ -161,11 +167,12 @@
                 />
               </td>
               <td>
-
+                
                 <!-- Min. and max. temperature -->
                 <p class="text-center">
-                  {{ Math.round(day.temp.min) }} &degC<span class="px-2">-</span
-                  >{{ Math.round(day.temp.max) }} &degC
+                  {{ Math.round(day.temp.min) }} &degC
+                  <span class="hidden px-2 xs:inline-block">-</span>
+                  {{ Math.round(day.temp.max) }} &degC
                 </p>
               </td>
             </tr>
@@ -180,7 +187,7 @@
       @click="removeLocality"
     >
       <i
-        class="fa-solid fa-minus-square fa-2xl aria-hidden='true' title='Usunąć tą miejscowość z zapisanych?'"
+        class="fa-solid fa-minus-square fa-2xl aria-hidden='true' title='Usunąć tą miejscowość z zapisanych? Ikona - znak minus'"
       ></i>
       <p class="text-2xl">Usuń</p>
     </div>

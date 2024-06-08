@@ -24,6 +24,7 @@ const openweathermapAPIKey = "";
 
 const savedLocalities = ref([]);
 
+// Get localities from local storage
 const getLocalities = async () => {
   if (localStorage.getItem("savedLocalities")) {
     savedLocalities.value = JSON.parse(localStorage.getItem("savedLocalities"));

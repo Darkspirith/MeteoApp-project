@@ -9,7 +9,7 @@
       <p>
         Made with
         <i
-          class="fa-solid fa-heart aria-hidden:true title='love' text-meteo-secondary hover:text-red-800 duration-500 px-1"
+          class="fa-solid fa-heart aria-hidden:true title='love' text-meteo-secondary hover:text-red-700 duration-700 px-1"
         >
           <span class="sr-only">love</span>
         </i>
