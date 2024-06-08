@@ -1,5 +1,5 @@
 <template>
-  <main class="container text-white mb-10">
+  <main class="container text-white">
     <div class="py-10 relative">
       <input
         type="text"
@@ -16,7 +16,7 @@
         <p v-if="searchError">
           Brak wyników. Hmm... Coś poszło nie tak. Spróbuj ponownie.
         </p>
-        <p v-if="!serverError && geocodingResults.length === 0">
+        <p v-if="!searchError && geocodingResults.length === 0">
           Niestety, nie znaleziono rezultatów dla podanej lokalizacji. Spróbuj
           podać inną.
         </p>
@@ -112,6 +112,8 @@ const getSearchResults = () => {
     geocodingResults.value = null;
   }, 320);
 };
+
+
 </script>
 
 <style lang="scss" scoped></style>
