@@ -1,5 +1,6 @@
 <template>
   <div class="flex flex-col flex-1 items-center">
+
     <!-- Info banner -->
     <div
       v-if="route.query.preview"
@@ -16,8 +17,9 @@
 
     <!-- Weather panel -->
 
-    <div class="flex flex-col items-center text-white py-12">
-      <h1 class="text-4xl mb-2">
+    <div class="flex flex-col items-center text-white py-6 mt-4">
+      <h1 class="text-4xl m-2">
+
         <!-- Locality name -->
         {{ route.params.city }}
       </h1>
@@ -36,8 +38,7 @@
               return firstLetter.toUpperCase();
             })
         }}
-        <span>r.</span>
-        <span class="mx-1"></span>
+        <span class="mr-2">r.</span>
 
         <!-- Time -->
         {{
@@ -58,7 +59,7 @@
         }}
         &degC
       </p>
-      <p class="text-lg mb-8">
+      <p class="text-lg mb-5">
         Temperatura odczuwalna:
         {{
           (Math.round(meteoData.current.feels_like * 2) / 2)
@@ -75,13 +76,13 @@
       </p>
       <img
         class="w-[150px] h-auto"
-        :src="`http://openweathermap.org/img/wn/${meteoData.current.weather[0].icon}@2x.png`"
+        :src="`https://openweathermap.org/img/wn/${meteoData.current.weather[0].icon}@2x.png`"
         alt=""
       />
     </div>
 
     <hr
-      class="border-meteo-tertiary border-opacity-50 border-2 border-dashed w-full my-6"
+      class="border-meteo-tertiary border-opacity-50 border-2 border-dashed w-full mt-2 mb-6"
     />
 
     <!-- Hourly weather -->
@@ -89,12 +90,12 @@
       class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm xs:w-screen-xs w-full mb-2 py-15"
     >
       <div class="mx-8 text-white">
-        <h2 class="mb-4 text-lg py-4">Prognoza godzinowa:</h2>
-        <div class="flex gap-10 overflow-x-auto">
+        <h2 class=" text-lg py-4 mb-7">Prognoza godzinowa:</h2>
+        <div class="flex gap-16 overflow-x-auto">
           <div
             v-for="hourData in meteoData.hourly"
             :key="hourData.dt"
-            class="flex flex-col gap-4 items-center py-"
+            class="flex flex-col gap-6 items-center"
           >
             <p class="whitespace-nowrap text-md">
               {{
@@ -107,36 +108,33 @@
 
             <!-- Hourly weather icon -->
             <img
-              class="w-auto h-[50px] object-cover"
-              :src="`http://openweathermap.org/img/wn/${hourData.weather[0].icon}@2x.png`"
-              alt=""
+              class="w-auto h-auto max-w-[70px] object-contain"
+              :src="`https://openweathermap.org/img/wn/${hourData.weather[0].icon}@2x.png`"
+              :alt="hourData.weather[0].description"
             />
-            <p class="text-md">{{ Math.round(hourData.temp) }} &degC</p>
 
-            <!-- Hourly weather description -->
-            <p class="text-center py-7">
-              {{ hourData.weather[0].description }}
-            </p>
+            <!-- Hourly temperature -->
+            <p class="text-md mb-14">{{ Math.round(hourData.temp) }} &degC</p>
           </div>
         </div>
       </div>
     </div>
 
     <hr
-      class="border-meteo-tertiary border-opacity-50 border-2 border-dashed w-full my-6"
+      class="border-meteo-tertiary border-opacity-50 border-2 border-dashed w-full mt-6 mb-2"
     />
 
     <!-- Weather for the coming 7 days -->
     <div
-      class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm xs:w-screen-xs w-full py-7"
+      class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm xs:w-screen-xs w-full my-7"
     >
-      <div class="mx-6 text-white">
+      <div class="mx-8 text-white">
         <h2 class="mb-3 text-lg py-4">Prognoza 7-dniowa:</h2>
         <table class="w-full">
           <tbody>
             <tr v-for="(day, index) in meteoData.daily" :key="day.dt">
-              <td>
-                <p class="justify-start">
+              <td class="py-5">
+                <p class="justify-start mr-2">
 
                   <!-- Week -->
                   {{
@@ -154,24 +152,28 @@
                   }}
                 </p>
               </td>
-              <td class="pl-4">
-                <p class="text-sm px-1 first-letter:capitalize">
+
+              <!-- Day weather description -->
+              <td>
+                <p class="first-letter:capitalize hidden sm:block">
                   {{ day.weather[0].description }}
                 </p>
               </td>
-              <td class="p-2">
+
+              <!-- Day weather icon -->
+              <td class="text-center">
                 <img
-                  class="w-[50px] h-[50px] object-cover"
-                  :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"
-                  alt=""
+                  :src="`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"
+                  :alt="day.weather[0].description"
+                  class="w-auto h-auto max-w-[60px] object-contain"
                 />
               </td>
               <td>
                 
                 <!-- Min. and max. temperature -->
-                <p class="text-center">
+                <p class="text-end">
                   {{ Math.round(day.temp.min) }} &degC
-                  <span class="hidden px-2 xs:inline-block">-</span>
+                  <span class="px-2">-</span>
                   {{ Math.round(day.temp.max) }} &degC
                 </p>
               </td>
@@ -181,9 +183,10 @@
       </div>
     </div>
 
-    <!-- "Remove" button -->
+
+    <!-- "Remove" / "Usuń" button -->
     <div
-      class="flex items-center gap-2 py-12 mb-5 text-white cursor-pointer duration-300 hover:text-red-400"
+      class="flex items-center gap-2 p-4 mt-2 mb-10 text-white cursor-pointer duration-300 hover:text-red-400"
       @click="removeLocality"
     >
       <i
@@ -205,7 +208,7 @@ const route = useRoute();
 const getMeteoData = async () => {
   try {
     const meteoData = await axios.get(
-      `https://api.openweathermap.org/data/3.0/onecall?lat=${route.query.lat}&lon=${route.query.lng}&exclude={part}&appid=${openweathermapAPIKey}&units=metric&lang=pl`
+      `https://api.openweathermap.org/data/3.0/onecall?lat=${route.query.lat}&lon=${route.query.lng}&appid=${openweathermapAPIKey}&units=metric&lang=pl`
     );
 
     // Current date and time

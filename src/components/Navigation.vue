@@ -36,6 +36,7 @@
         <i
           class="fa-solid fa-question aria-hidden='true' title='Jak korzystać z aplikacji? Ikona - znak zapytania'
            fa-2xl text-gray-300 hover:text-yellow-500 hover:scale-110 duration-300 cursor-pointer"
+          :class="{ 'text-yellow-500': modalActive }"
           @click="toggleModal"
         ></i>
         <i
