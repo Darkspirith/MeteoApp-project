@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LocalityView from "../views/LocalityView.vue";
+import BugReportView from "@/views/BugReportView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,7 +16,7 @@ const router = createRouter({
       },
     },
     {
-      path: "/pogoda/:state/:city",
+      path: "/Pogoda/:state/:city",
       name: "LocalityView",
       component: LocalityView,
       meta: {
@@ -23,6 +24,16 @@ const router = createRouter({
         ariaLabel: "Pogoda dla wybranej miejscowości",
       },
     },
+    {
+      path: "/ZglosBlad",
+      name: "BugReportView",
+      component: BugReportView,
+      meta: {
+        title: "Zgłoś błąd w aplikacji",
+        ariaLabel: "Zgłoś błąd w aplikacji",
+      },
+    },
+ 
   ],
 });
 

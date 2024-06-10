@@ -6,6 +6,7 @@ My student project. A simple weather web app. It's available in Polish language.
 
 - Vue.js
 - Tailwind.css
+- Axios
 - OpenWeatherMap API
 - Mapbox Geocoding API
 

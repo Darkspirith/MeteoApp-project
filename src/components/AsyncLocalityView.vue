@@ -90,7 +90,7 @@
       class="lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm xs:w-screen-xs w-full mb-2 py-15"
     >
       <div class="mx-8 text-white">
-        <h2 class=" text-lg py-4 mb-7">Prognoza godzinowa:</h2>
+        <h2 class="text-lg py-4 mb-7">Prognoza godzinowa:</h2>
         <div class="flex gap-16 overflow-x-auto">
           <div
             v-for="hourData in meteoData.hourly"
@@ -169,7 +169,7 @@
                 />
               </td>
               <td>
-                
+
                 <!-- Min. and max. temperature -->
                 <p class="text-end">
                   {{ Math.round(day.temp.min) }} &degC
@@ -183,8 +183,7 @@
       </div>
     </div>
 
-
-    <!-- "Remove" / "Usuń" button -->
+    <!-- "Remove" button -->
     <div
       class="flex items-center gap-2 p-4 mt-2 mb-10 text-white cursor-pointer duration-300 hover:text-red-400"
       @click="removeLocality"

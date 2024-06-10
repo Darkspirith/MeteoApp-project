@@ -14,6 +14,6 @@ import Navigation from "./components/Navigation.vue";
 import Footer from "./components/Footer.vue";
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
 
 

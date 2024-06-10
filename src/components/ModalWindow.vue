@@ -1,4 +1,4 @@
- <template>
+<template>
   <Teleport to="body">
     <Transition name="modal-outer">
       <div
@@ -11,6 +11,8 @@
             class="rounded-lg p-5 bg-neutral-700 self-start max-w-screen-md mx-3 lg:mt-32 md:mt-32 sm:mt-5 overflow-auto"
           >
             <slot />
+
+            <!-- Close modal button -->
             <button
               class="mt-8 text-md rounded-lg bg-emerald-700 py-3 px-7 text-white hover:bg-meteo-tertiary duration-300"
               @click="$emit('close-modal')"

@@ -9,8 +9,7 @@
         aria-label="Strona główna"
         class="hover:scale-105 duration-500"
       >
-
-      <!-- Logo -->
+        <!-- Logo -->
         <div class="flex items-center gap-3 flex-1">
           <i
             class="fa-solid fa-cloud-sun aria-hidden='true' fa-2xl"
@@ -47,6 +46,7 @@
         ></i>
       </div>
 
+      <!-- Modal window - app guide -->
       <ModalWindow :modalActive="modalActive" @close-modal="toggleModal">
         <div class="text-white">
           <h1 class="text-xl mt-2 mb-7">
@@ -125,7 +125,6 @@ const addLocality = () => {
 
 const modalActive = ref(null);
 
-// Modal window
 const toggleModal = () => {
   modalActive.value = !modalActive.value;
 };

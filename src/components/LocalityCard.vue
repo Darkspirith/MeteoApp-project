@@ -13,7 +13,7 @@
         </p>
         <p class="text-sm text-right py-1">
           {{ Math.round(city.weather.main.temp_min) }} &degC
-         <span class="mx-1">-</span>
+          <span class="mx-1">-</span>
           {{ Math.round(city.weather.main.temp_max) }} &degC
         </p>
       </div>
