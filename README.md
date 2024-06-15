@@ -17,7 +17,7 @@ OpenWeatherMap API
 
 ![Home page. Color theme: gray and emerald. Several saved cards with locations.](https://github.com/Darkspirith/MeteoApp-project/assets/122991207/2d474f6b-2244-49dd-aad8-e459e76eec34)
 -
-![Guide window.](https://github.com/Darkspirith/MeteoApp-project/assets/122991207/ea0d483a-6fb6-4266-97a5-8e5ea6846a1b)
+![Guide window.](https://github.com/Darkspirith/MeteoApp-project/assets/122991207/ea7a5c6e-8d9f-4c14-8a0c-89c752bf1200)
 -
 ![Geocoding API in action.](https://github.com/Darkspirith/MeteoApp-project/assets/122991207/ce2f213f-304c-4a3d-83c9-5cdf04a27dd3)
 -
