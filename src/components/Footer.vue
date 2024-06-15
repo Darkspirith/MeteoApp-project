@@ -4,9 +4,9 @@
     style="box-shadow: 0 3px 9px 0 rgba(233, 233, 233, 1)"
   >
     <div
-      class="flex justify-center text-center lg:text-base md:text-sm sm:text-xs xs:text-xs py-4 px-3"
+      class="flex justify-center text-center lg:text-base md:text-sm sm:text-xs xs:text-xs p-3"
     >
-      <p class="lg:pr-20 md:pr-16 sm:pr-8 xs:pr-3">
+      <p class="lg:pr-20 md:pr-12 sm:pr-7 xs:pr-3">
         Made with
         <i
           class="fa-solid fa-heart aria-hidden:true title='love' text-meteo-secondary hover:text-red-700 duration-700 px-1"
@@ -15,25 +15,27 @@
         </i>
         in Bytom
       </p>
-      <p class="lg:pr-20 md:pr-16 sm:pr-8 xs:pr-3">
+      <p class="lg:pr-20 md:pr-12 sm:pr-7 xs:pr-3">
         Dane pogodowe dostarcza
-        <a class="font-bold" href="https://openweathermap.org/"
+        <a class="font-bold" href="https://openweathermap.org/" target="_blank"
           >OpenWeatherMap</a
         >
       </p>
-      <p class="lg:pr-20 md:pr-16 sm:pr-8 xs:pr-3">
+      <p class="lg:pr-20 md:pr-12 sm:pr-7 xs:pr-3">
         Geokodowanie napędza
-        <a class="font-bold" href="http://mapbox.com/about/maps">Mapbox</a>
+        <a class="font-bold" href="http://mapbox.com/about/maps" target="_blank"
+          >Mapbox</a
+        >
       </p>
       <p>
         <a
-          class="hover:text-yellow-500 duration-300 cursor-pointer"
+          class="hover:text-orange-400 duration-300 cursor-pointer"
           @click="router.push({ name: 'BugReportView' })"
         >
-          <i
-            class="fa-solid fa-exclamation-triangle aria-hidden:true title='Czy chcesz zgłosić błąd? Ikona - ikona wykrzyknika w trójkącie' px-1"
-          ></i>
           Zgłoś błąd
+          <i
+            class="fa-solid fa-bug aria-hidden:true title='Czy chcesz zgłosić błąd? Ikona - bug' px-1"
+          ></i>
         </a>
       </p>
     </div>

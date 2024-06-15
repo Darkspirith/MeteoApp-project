@@ -25,7 +25,7 @@
             v-for="searchResult in geocodingResults"
             :key="searchResult.id"
             @click="previewLocality(searchResult)"
-            class="p-2 cursor-pointer bg hover:bg-meteo-tertiary rounded-lg"
+            class="p-2 hover:bg-neutral-600 rounded-lg cursor-pointer"
           >
             {{ searchResult.place_name }}
           </li>
@@ -33,7 +33,7 @@
       </ul>
 
       <div
-        class="flex flex-col gap-3 lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm xs:max-w-screen-xs"
+        class="flex flex-col gap-4 lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm xs:max-w-screen-xs"
       >
 
         <!-- Suspense is used to load the TrackedLocalities component. Suspense is experimental feature for Vue 3. -->

@@ -1,7 +1,7 @@
 <template>
   <header class="sticky top-0 bg-meteo-primary shadow-emerald-900 shadow-lg">
     <nav
-      class="container flex flex-col sm:flex-row items-center gap-4 text-white py-9"
+      class="container flex flex-col sm:flex-row items-center gap-4 text-white lg:pt-9 md:pt-9 sm:pt-5 xs:pt-5 pb-9"
     >
       <RouterLink
         :to="{ name: 'home' }"

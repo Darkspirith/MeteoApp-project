@@ -9,7 +9,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      Lato: ["Lato", "Verdana"],
+      Lato: ["Lato, Verdana"],
     },
     container: {
       padding: "2rem",

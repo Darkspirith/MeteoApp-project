@@ -3,7 +3,7 @@
     <Transition name="modal-outer">
       <div
         v-show="modalActive"
-        class="fixed inset-0 flex items-center justify-center bg-black/80 mt-1"
+        class="fixed inset-0 flex items-center justify-center bg-black/80 mt-1 z-20"
       >
         <Transition name="modal-inner">
           <div

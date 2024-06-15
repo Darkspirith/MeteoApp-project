@@ -1,9 +1,7 @@
 <template>
   <div class="bg-meteo-primary flex flex-col min-h-screen font-Lato">
     <Navigation class="sticky top-0 z-10" />
-    <div class="overflow-auto flex-grow">
-      <RouterView />
-    </div>
+    <RouterView class="content-container flex-1" />
     <Footer />
   </div>
 </template>

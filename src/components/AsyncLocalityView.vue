@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col flex-1 items-center">
+  <div class="flex flex-col items-center">
 
     <!-- Info banner -->
     <div
