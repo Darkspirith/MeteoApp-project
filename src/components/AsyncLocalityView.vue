@@ -50,7 +50,7 @@
       </p>
 
       <!-- Current temperature -->
-      <p class="text-8xl mb-8">
+      <p class="lg:text-8xl md:text-8xl sm:text-8xl xs:text-7xl mb-8">
         {{
           (Math.round(meteoData.current.temp * 2) / 2)
             .toFixed(1)
@@ -134,7 +134,7 @@
           <tbody>
             <tr v-for="(day, index) in meteoData.daily" :key="day.dt">
               <td class="py-5">
-                <p class="justify-start mr-2">
+                <p class="justify-start mr-1">
 
                   <!-- Week -->
                   {{
@@ -165,7 +165,7 @@
                 <img
                   :src="`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"
                   :alt="day.weather[0].description"
-                  class="w-auto h-auto max-w-[60px] object-contain"
+                  class="w-auto h-auto max-w-[60px] object-contain mr-1"
                 />
               </td>
               <td>
@@ -173,7 +173,7 @@
                 <!-- Min. and max. temperature -->
                 <p class="text-end">
                   {{ Math.round(day.temp.min) }} &degC
-                  <span class="px-2">-</span>
+                  <span class="px-1">-</span>
                   {{ Math.round(day.temp.max) }} &degC
                 </p>
               </td>
@@ -185,7 +185,7 @@
 
     <!-- "Remove" button -->
     <div
-      class="flex items-center gap-2 p-4 mt-2 mb-10 text-white cursor-pointer duration-300 hover:text-red-400"
+      class="flex items-center gap-2 p-4 mt-2 mb-14 text-white cursor-pointer duration-300 hover:text-red-400"
       @click="removeLocality"
     >
       <i

@@ -24,7 +24,7 @@
           id="email"
           v-model="form.email"
           type="email"
-          class="text-black rounded p-4 w-full"
+          class="text-black rounded p-4 lg:w-2/3 md:w-2/3 sm:w-2/3 xs:w-full"
         />
       </div>
    
@@ -39,7 +39,7 @@
     </form>
       <p
         v-if="submitted"
-        class="text-center py-1 px-20 mb-20 text-meteo-secondary"
+      class="lg:text-lg md:text-lg sm:text-lg xs:text-md text-center lg:py-6 md:py-6 sm:py-6 xs:py-0 px-20 mb-20 text-meteo-secondary"
       >
         Błąd został zgłoszony. Wkrótce zajmiemy się nim!
       </p>
