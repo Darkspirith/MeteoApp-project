@@ -30,6 +30,7 @@
       <p>
         <a
           class="hover:text-orange-400 duration-300 cursor-pointer"
+          :class="{ 'text-orange-400': $route.name === 'BugReportView' }"
           @click="router.push({ name: 'BugReportView' })"
         >
           Zgłoś błąd
